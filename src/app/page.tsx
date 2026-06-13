@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Header from '@/components/Header';
@@ -40,7 +41,79 @@ const projectColors = [
   '#1e2535', '#1e1e2e', '#2a1e1e', '#1a2434', '#1a2a1e',
 ];
 
+const pmTools = [
+  { src: 'https://jira.atlassian.com/favicon.ico', alt: 'Jira' },
+  { src: 'https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png', alt: 'GitLab' },
+  { src: 'https://www.microsoft.com/favicon.ico', alt: 'Microsoft Excel' },
+  { src: 'https://www.notion.so/images/favicon.ico', alt: 'Notion' },
+  { src: 'https://workspace.google.com/favicon.ico', alt: 'Google Workspace' },
+];
+
+const analysisTools = [
+  { src: 'https://notebooklm.google/favicon.ico', alt: 'NotebookLM' },
+  { src: 'https://swagger.io/favicon.ico', alt: 'Swagger' },
+  { src: 'https://voyager.postman.com/logo/postman-logo-orange-stacked.svg', alt: 'Postman' },
+  { src: 'https://resources.bizagi.com/images/ico/favicon.ico', alt: 'Bizagi' },
+  { src: 'https://www.drawio.com/favicon.ico', alt: 'Draw.io' },
+];
+
+const designTools = [
+  { src: 'https://static.figma.com/app/icon/1/favicon.ico', alt: 'Figma' },
+  { src: 'https://maze.co/favicon.ico', alt: 'Maze' },
+  { src: 'https://miro.com/favicon.ico', alt: 'Miro' },
+  { src: 'https://static.figma.com/app/icon/1/favicon.png', alt: 'FigJam' },
+  { src: 'https://www.adobe.com/favicon.ico', alt: 'Adobe Illustrator' },
+];
+
 export default function Home() {
+  const roles = ['Project Manager', 'Product Manager', 'System Analyst'];
+  const [index, setIndex] = useState(0);
+  const aboutText = `I work at the intersection of project delivery, system analysis, and user experience. ${portfolioData.summary}`;
+  const [typedAbout, setTypedAbout] = useState('');
+  const [hasStartedTyping, setHasStartedTyping] = useState(false);
+  const aboutSectionRef = useRef<HTMLElement | null>(null);
+  const isTypingComplete = typedAbout.length >= aboutText.length;
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % roles.length), 3000);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (hasStartedTyping) return;
+
+    const node = aboutSectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setHasStartedTyping(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasStartedTyping]);
+
+  useEffect(() => {
+    if (!hasStartedTyping) return;
+
+    let current = 0;
+    const typingId = window.setInterval(() => {
+      current += 1;
+      setTypedAbout(aboutText.slice(0, current));
+      if (current >= aboutText.length) {
+        window.clearInterval(typingId);
+      }
+    }, 14);
+
+    return () => window.clearInterval(typingId);
+  }, [aboutText, hasStartedTyping]);
+
   return (
     <main>
       <Header />
@@ -67,7 +140,7 @@ export default function Home() {
               transition={{ delay: 0.1, duration: 0.7 }}
             >
               <h1 className={styles.heroGreeting}>Hi, I&apos;m Prigel.</h1>
-              <h1 className={styles.heroRole}>Project Manager.</h1>
+              <h1 className={styles.heroRole}><span className={styles.role} key={index}>{roles[index]}.</span></h1>
             </motion.div>
 
             <motion.p
@@ -76,7 +149,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25, duration: 0.7 }}
             >
-              Delivering structured, scalable digital solutions refined by a keen sense of human-centered design and creative innovation.
+              Bridging people, processes, and technology to deliver structured digital solutions that create real impact.
             </motion.p>
 
             <motion.div
@@ -85,11 +158,11 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35, duration: 0.7 }}
             >
-              <a href="mailto:prigelkusumawardani@gmail.com" className={styles.heroBtnPrimary}>
+              <a href="https://www.linkedin.com/in/prigel-kusumawardani/" className={styles.heroBtnPrimary}>
                 Let&apos;s Connect <ArrowUpRight size={15} />
               </a>
-              <a href="#" className={styles.heroBtnSecondary}>
-                📄 PDF Portfolio
+              <a href="https://drive.google.com/file/d/1Be7oKqY4zKcl1FQ269vvowQ1R_CBweXZ/view" className={styles.heroBtnSecondary}>
+                📄 Portfolio Deck
               </a>
             </motion.div>
 
@@ -129,7 +202,7 @@ export default function Home() {
       </div>
 
       {/* ── ABOUT ────────────────────────────────────────────────────── */}
-      <section className={styles.section} id="about">
+      <section ref={aboutSectionRef} className={styles.section} id="about">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -140,15 +213,33 @@ export default function Home() {
             About Me
           </motion.div>
 
-          <div className={styles.aboutTop}>
+          <motion.div
+            layout
+            transition={{ duration: 0.35, ease: 'easeInOut' }}
+            className={`${styles.aboutTop} ${styles.aboutTopExpanded}`}
+          >
             <motion.h2 variants={fadeUp} className={styles.aboutHeading}>
-              Design has always been more than just a job – it&apos;s my passion.
+              Building useful digital products is where strategy meets empathy.
             </motion.h2>
-            <motion.p variants={fadeUp} className={styles.aboutDesc}>
-              Design is not just a job for me, it&apos;s a passion that drives me.{' '}
-              {portfolioData.summary.slice(0, 120)}...
-            </motion.p>
-          </div>
+            <motion.div variants={fadeUp}>
+              <div className={styles.aboutTypingWrap}>
+                <p className={`${styles.aboutDesc} ${styles.aboutDescGhost}`} aria-hidden="true">
+                  {aboutText}
+                </p>
+                <motion.p
+                  className={`${styles.aboutDesc} ${styles.aboutDescTyped}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                >
+                  {typedAbout}
+                  {hasStartedTyping && !isTypingComplete && (
+                    <span className={styles.typeCursor} aria-hidden="true">|</span>
+                  )}
+                </motion.p>
+              </div>
+            </motion.div>
+          </motion.div>
 
           <div className={styles.aboutBottom}>
             <motion.div variants={fadeUp} className={styles.aboutPhoto}>
@@ -166,7 +257,13 @@ export default function Home() {
               <div className={styles.stat}>
                 <span className={styles.statNumber}>+5</span>
                 <span className={styles.statLabel}>
-                  Projects designed and delivered end-to-end across various domains.
+                  Personal projects built during university across various domains.
+                </span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>+4</span>
+                <span className={styles.statLabel}>
+                  Real project experiences with cross-functional product and delivery teams.
                 </span>
               </div>
             </motion.div>
@@ -183,16 +280,16 @@ export default function Home() {
           viewport={{ once: true, margin: '-80px' }}
         >
           <motion.div variants={fadeUp} className={styles.sectionLabel}>
-            Services
+            Core Strengths
           </motion.div>
 
           <div className={styles.servicesGrid}>
             <motion.div variants={fadeUp} className={styles.servicesLeft}>
               <h2 className={styles.servicesHeading}>
-                A Comprehensive look at what I offer and how I deliver
+                What I do and how I contribute across product teams
               </h2>
               <p className={styles.servicesDesc}>
-                A comprehensive look at my services and how I approach them.
+                A snapshot of the capabilities I apply in real project environments.
               </p>
               <a
                 href="mailto:prigelkusumawardani@gmail.com"
@@ -203,40 +300,52 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.servicesCards}>
-              <div className={styles.serviceCard}>
+              <div className={`${styles.serviceCard} ${styles.serviceCardFeatured}`}>
                 <div className={styles.cardBody}>
                   <h3>Project Management</h3>
-                  <p>Agile leadership, sprint planning, and cross-functional team coordination to hit every milestone.</p>
+                  <p>Agile leadership, sprint planning, stakeholder follow-up, and cross-functional coordination to keep timelines, reporting, and delivery aligned across real projects.</p>
+                  <p>From daily stand-ups and issue-board tracking to risk follow-up and progress reporting, I focus on keeping teams unblocked, priorities clear, and delivery moving consistently from start to finish.</p>
+                  <div className={styles.cardLogoRow}>
+                    {pmTools.map((tool) => (
+                      <img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" />
+                    ))}
+                  </div>
                 </div>
-                <ArrowUpRight size={18} className={styles.cardArrow} />
+                <a href="#experience" className={styles.cardArrow} aria-label="Go to experience section">
+                  <ArrowUpRight size={18} />
+                </a>
               </div>
 
               <div className={styles.serviceCard}>
                 <div className={styles.cardBody}>
-                  <h3>Search Engineer</h3>
-                  <p>Requirement engineering, BPMN, UML modeling, and AI-powered gap analysis using NotebookLM.</p>
+                  <h3>System Analysis</h3>
+                  <p>Requirement engineering, BPMN, UML modeling, and AI-powered gap analysis for clear system logic.</p>
+                  <div className={styles.cardLogoRow}>
+                    {analysisTools.map((tool) => (
+                      <img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" />
+                    ))}
+                  </div>
                 </div>
-                <ArrowUpRight size={18} className={styles.cardArrow} />
+                <a href="#experience" className={styles.cardArrow} aria-label="Go to experience section">
+                  <ArrowUpRight size={18} />
+                </a>
               </div>
 
-              <div className={`${styles.serviceCard} ${styles.serviceCardDark}`}>
+              <div className={styles.serviceCard}>
                 <div className={styles.cardBody}>
                   <h3>UI/UX Design</h3>
                   <p>
-                    We create end-to-end flows — from user research to high-fidelity Figma prototypes validated with Maze.
+                    I design end-to-end flows from user research to high-fidelity prototypes validated through usability testing.
                   </p>
+                  <div className={styles.cardLogoRow}>
+                    {designTools.map((tool) => (
+                      <img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" />
+                    ))}
+                  </div>
                 </div>
-                <div className={styles.cardArrowDark}>
+                <a href="#portfolio" className={styles.cardArrow} aria-label="Go to portfolio section">
                   <ArrowUpRight size={18} />
-                </div>
-              </div>
-
-              <div className={styles.serviceCard}>
-                <div className={styles.cardBody}>
-                  <h3>Tools & Stack</h3>
-                  <p>Proficient in Jira, GitLab, Swagger, Figma, and Postman to ship production-ready digital products.</p>
-                </div>
-                <ArrowUpRight size={18} className={styles.cardArrow} />
+                </a>
               </div>
             </motion.div>
           </div>
@@ -257,10 +366,10 @@ export default function Home() {
 
           <div className={styles.expHeader}>
             <motion.h2 variants={fadeUp} className={styles.expHeading}>
-              A Yearly snapshot of my creative growth
+              A timeline of my academic and professional growth
             </motion.h2>
             <motion.p variants={fadeUp} className={styles.expSubDesc}>
-              An annual summary that summarizes my creative journey and development throughout the years.
+              From campus leadership to internship delivery, each role strengthened my product and execution skills.
             </motion.p>
           </div>
 
@@ -303,10 +412,10 @@ export default function Home() {
 
           <div className={styles.portfolioHeader}>
             <motion.h2 variants={fadeUp} className={styles.portfolioHeading}>
-              Explore my portfolio of creative solutions
+              Selected projects I have designed and delivered
             </motion.h2>
             <motion.p variants={fadeUp} className={styles.portfolioDesc}>
-              Explore my portfolio full of creative solutions.
+              Case highlights across system design, product thinking, and user experience.
             </motion.p>
           </div>
 
@@ -341,9 +450,9 @@ export default function Home() {
         >
           <div className={styles.quoteIcon}>&ldquo;</div>
           <p className={styles.quote}>
-            Without strong design principles, we would never have been able to implement
-            this level of user experience. Being a small team we don&apos;t have enough hours
-            in the day — but disciplined research and prototyping gave us the leverage we needed.
+            I enjoy turning ambiguous requirements into clear plans, then aligning teams to deliver
+            meaningful outcomes. My approach combines structured analysis, practical execution,
+            and user-centered design to keep both business goals and user needs in balance.
           </p>
           <p className={styles.quoteAchievement}>
             2nd Place Winner, GIDHUB 2025 National UI/UX Competition — and maintaining a consistent
@@ -371,10 +480,10 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            Let&apos;s Connect<br />There
+            Let&apos;s Build Something<br />Meaningful
           </motion.h2>
           <motion.a
-            href="mailto:prigelkusumawardani@gmail.com"
+            href="https://www.linkedin.com/in/prigel-kusumawardani/"
             className={styles.footerCtaBtn}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -382,7 +491,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <span className={styles.footerCtaBtnArrow}>&rsaquo;&rsaquo;</span>
-            Hire Me Now!
+            Let&apos;s Collaborate
           </motion.a>
         </div>
       </section>
@@ -424,7 +533,7 @@ export default function Home() {
             </div>
 
             <div className={styles.footerCol}>
-              <h4>About Us</h4>
+              <h4>Navigate</h4>
               <ul className={styles.footerLinks}>
                 <li><a href="#about">Personal</a></li>
                 <li><a href="#skills">Skills</a></li>

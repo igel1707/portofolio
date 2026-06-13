@@ -77,6 +77,16 @@
   color: #c0c0c0;
 }
 
+.role {
+  display: inline-block;
+  animation: fadeIn 480ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .heroDesc {
   font-size: 0.95rem;
   line-height: 1.8;
@@ -197,6 +207,11 @@
   align-items: start;
 }
 
+.aboutTopExpanded {
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
 .aboutHeading {
   font-size: clamp(1.6rem, 3vw, 2.6rem);
   font-weight: 700;
@@ -209,6 +224,34 @@
   color: #777;
   line-height: 1.7;
   padding-top: 0.3rem;
+}
+
+.aboutTypingWrap {
+  position: relative;
+}
+
+.aboutDescGhost {
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.aboutDescTyped {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.typeCursor {
+  display: inline-block;
+  margin-left: 0.12rem;
+  color: #555;
+  animation: blinkCursor 1s step-start infinite;
+}
+
+@keyframes blinkCursor {
+  50% { opacity: 0; }
 }
 
 .aboutBottom {
@@ -254,8 +297,6 @@
   padding-top: 1rem;
 }
 
-.stat {}
-
 .statNumber {
   display: block;
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -278,8 +319,6 @@
   gap: 4rem;
   align-items: start;
 }
-
-.servicesLeft {}
 
 .servicesHeading {
   font-size: clamp(1.5rem, 2.5vw, 2.2rem);
@@ -313,6 +352,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  align-items: stretch;
 }
 
 .serviceCard {
@@ -325,6 +365,11 @@
   min-height: 200px;
   transition: border-color 0.25s, transform 0.25s;
   cursor: pointer;
+}
+
+.serviceCardFeatured {
+  grid-row: span 2;
+  min-height: 100%;
 }
 
 .serviceCard:hover {
@@ -357,6 +402,23 @@
   font-size: 0.82rem;
   line-height: 1.6;
   color: #888;
+}
+
+.cardLogoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.cardLogo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
 }
 
 .serviceCardDark p {
@@ -424,8 +486,6 @@
 .expRow:last-child {
   border-bottom: 1px solid #e8e8e8;
 }
-
-.expInfo {}
 
 .expRole {
   font-size: 1.2rem;
@@ -690,8 +750,6 @@
   margin-bottom: 3rem;
 }
 
-.footerBrand {}
-
 .footerLogo {
   display: flex;
   align-items: center;
@@ -738,8 +796,6 @@
   color: #fff;
   border-color: #fff;
 }
-
-.footerCol {}
 
 .footerCol h4 {
   font-size: 0.7rem;

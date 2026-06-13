@@ -23,6 +23,16 @@
   padding-left: 1.5rem;
 }
 
+.role {
+  display: inline-block;
+  animation: fadeIn 480ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .name {
   font-size: clamp(3.5rem, 10vw, 7rem);
   line-height: 0.85;
@@ -53,7 +63,7 @@
 }
 
 .photoPlaceholder::after {
-  content: "INSERT PHOTO";
+  content: "prigel-photo.png";
   font-weight: 900;
   color: var(--muted);
   opacity: 0.2;
