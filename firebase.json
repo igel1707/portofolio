@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "prigel-kusumawardani",
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "asia-southeast2"
+    }
+  }
+}
