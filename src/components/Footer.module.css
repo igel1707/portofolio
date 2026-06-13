@@ -1,0 +1,29 @@
+.footer {
+  margin-top: 6rem;
+  padding: 4rem 0;
+  border-top: 1px solid var(--card-border);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.socials {
+  display: flex;
+  gap: 3rem;
+}
+
+.socialLink:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+  .container { flex-direction: column; gap: 2rem; text-align: center; }
+}

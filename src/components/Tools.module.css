@@ -1,0 +1,97 @@
+.tools {
+  border-top: 1px solid var(--border);
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.toolCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3rem 2rem;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.toolCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-warm);
+  background: var(--bg);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.05);
+}
+
+.iconWrapper {
+  width: 70px;
+  height: 70px;
+  background: var(--bg);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+.toolName {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.actionHint {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* Modal Content */
+.modalTitle {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.usageBox {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3rem;
+  border-radius: 32px;
+}
+
+.usageLabel {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-warm);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.usageContent {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .toolName { font-size: 1.25rem; }
+  .modalTitle { font-size: 2.2rem; }
+  .usageContent { font-size: 1.1rem; }
+}

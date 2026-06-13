@@ -1,0 +1,292 @@
+.main {
+  min-height: 100vh;
+  padding-top: 6rem;
+}
+
+.heroBlock {
+  grid-column: span 2;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--fg);
+  color: var(--bg);
+  border: none;
+}
+
+.heroContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+  margin-bottom: 2rem;
+}
+
+.name {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.85;
+  margin-bottom: auto;
+}
+
+.heroPhoto {
+  width: 100%;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  letter-spacing: 0.5em;
+  opacity: 0.2;
+}
+
+.summaryBlock {
+  grid-column: span 2;
+  background: var(--earth);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.summaryText {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+}
+
+.contactBtn {
+  background: white;
+  color: var(--fg);
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.gpaBlock {
+  grid-column: span 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fdfaf3;
+  color: var(--fg);
+}
+
+.gpaValue {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.gpaLabel {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.expBlock {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.blockHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.blockHeader h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.expList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.expMiniItem {
+  cursor: pointer;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.expMiniItem:last-child {
+  border-bottom: none;
+}
+
+.expRole {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.expCompany {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.toolsBlock {
+  grid-column: span 1;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.toolIcon {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toolIcon:hover {
+  background: var(--earth);
+  color: white;
+}
+
+.compBlock {
+  grid-column: span 1;
+}
+
+.compTags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.compTag {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.eduBlock, .achBlock {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.eduSchool {
+  font-size: 1rem;
+}
+
+/* Modal Content Styling */
+.modalMeta {
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.modalTitle {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--fg);
+}
+
+.modalSubtitle {
+  font-size: 1.5rem;
+  color: var(--muted);
+  margin-bottom: 3rem;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.modalSection {
+  margin-bottom: 3rem;
+}
+
+.modalSection h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--earth);
+  margin-bottom: 1.5rem;
+}
+
+.modalSection ul {
+  list-style: none;
+}
+
+.modalSection li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+  position: relative;
+  padding-left: 2rem;
+}
+
+.modalSection li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: var(--earth);
+  border-radius: 50%;
+}
+
+.usageBox {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 3rem;
+  border-radius: 30px;
+}
+
+.usageBox span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--earth);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.usageBox p {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .heroBlock, .summaryBlock { grid-column: span 2; }
+}
+
+@media (max-width: 768px) {
+  .heroBlock, .summaryBlock, .gpaBlock, .expBlock, .toolsBlock, .compBlock, .eduBlock, .achBlock {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

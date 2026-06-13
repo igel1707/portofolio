@@ -1,0 +1,81 @@
+.projects {
+  border-top: 1px solid var(--border);
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--accent-light);
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagePlaceholder::after {
+  content: "PROJECT PREVIEW";
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.2;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+}
+
+.card:hover .imagePlaceholder {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.projectName {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+.projectTagline {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-warm);
+}
+
+.projectDesc {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 450px;
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .grid { grid-template-columns: 1fr; gap: 5rem; }
+  .projectName { font-size: 1.8rem; }
+}

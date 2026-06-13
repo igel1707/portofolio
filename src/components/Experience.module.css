@@ -1,0 +1,89 @@
+.experience {
+  border-top: 1px solid var(--border);
+}
+
+.titleArea {
+  margin-bottom: 6rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-warm);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 250px 1fr auto;
+  align-items: baseline;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.item:hover {
+  background: rgba(94, 102, 82, 0.02);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.period {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.role {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.1;
+}
+
+.company {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.viewIcon {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: all 0.3s;
+}
+
+.item:hover .viewIcon {
+  background: var(--fg);
+  color: var(--bg);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 968px) {
+  .item { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 0; }
+  .role { font-size: 1.75rem; }
+  .title { font-size: 2.5rem; }
+}

@@ -1,0 +1,86 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+}
+
+.badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  border-left: 3px solid var(--accent-warm);
+  padding-left: 1.5rem;
+}
+
+.name {
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 0.85;
+  color: var(--fg);
+  margin-bottom: 5rem;
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: flex-end;
+}
+
+.imageArea {
+  position: relative;
+}
+
+.photoPlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--accent-light);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.05);
+}
+
+.photoPlaceholder::after {
+  content: "INSERT PHOTO";
+  font-weight: 900;
+  color: var(--muted);
+  opacity: 0.2;
+  letter-spacing: 0.1em;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.summary {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.3;
+  max-width: 600px;
+}
+
+.ctaArea {
+  display: flex;
+  gap: 2.5rem;
+}
+
+@media (max-width: 968px) {
+  .bottom { grid-template-columns: 1fr; gap: 4rem; }
+  .name { font-size: 3.5rem; }
+  .summary { font-size: 1.25rem; }
+}

@@ -1,0 +1,61 @@
+.education {
+  border-top: 1px solid var(--border);
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 5rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 4rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.period {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent-warm);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+
+.school {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.degree {
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.coursework {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.coursework span {
+  font-weight: 800;
+  color: var(--fg);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .school { font-size: 1.8rem; }
+  .list { grid-template-columns: 1fr; gap: 3rem; }
+}
