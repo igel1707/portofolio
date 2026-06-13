@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Hero.module.css';
 import { ArrowDown } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   const roles = ['Project Manager', 'Product Manager', 'System Analyst'];
@@ -25,8 +26,15 @@ export default function Hero() {
 
       <div className={styles.bottom}>
         <div className={styles.imageArea}>
-          <div className={styles.photoPlaceholder}>
-            {/* Image Placeholder */}
+          <div className={styles.photoWrapper}>
+            <Image
+              src="/prigel-photo.png"
+              alt="Prigel Kusumawardani"
+              fill
+              className={styles.photo}
+              style={{ objectFit: 'cover' }}
+              priority
+            />
           </div>
         </div>
 
