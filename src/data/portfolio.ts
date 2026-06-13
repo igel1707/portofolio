@@ -1,6 +1,6 @@
 export const portfolioData = {
   name: "PRIGEL KUSUMAWARDANI",
-  titles: ["Associate Project Manager", "System Analyst", "UI/UX Designer"],
+  titles: ["Associate Project Manager", "System Analyst"],
   contact: {
     location: "Malang, East Java",
     phone: "+62 857-0877-9694",
@@ -40,6 +40,7 @@ export const portfolioData = {
     {
       role: "Associate Project Manager Intern",
       company: "PT Digdaya Olah Teknologi Indonesia",
+      logo: "/pt-digdaya-logo.svg",
       period: "Feb 2026 – Present",
       description: "Leading end-to-end delivery of 4 concurrent technology projects with cross-functional teams.",
       highlights: [
