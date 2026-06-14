@@ -51,23 +51,17 @@
   position: relative;
 }
 
-.photoPlaceholder {
+.photoWrapper {
   width: 100%;
   aspect-ratio: 4 / 5;
-  background: var(--accent-light);
+  position: relative;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.05);
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.15);
 }
 
-.photoPlaceholder::after {
-  content: "prigel-photo.png";
-  font-weight: 900;
-  color: var(--muted);
-  opacity: 0.2;
-  letter-spacing: 0.1em;
+.photo {
+  border-radius: 20px;
 }
 
 .description {
