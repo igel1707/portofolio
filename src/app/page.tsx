@@ -70,6 +70,7 @@ const designTools = [
   { src: 'https://miro.com/favicon.ico', alt: 'Miro' },
   { src: '/tool-logos/maze.png', alt: 'Maze' },
   { src: '/tool-logos/stitch.png', alt: 'Stitch-AI' },
+  { src: 'https://static.figma.com/app/icon/1/favicon.png', alt: 'FigJam' },
 ];
 
 export default function Home() {
@@ -80,6 +81,7 @@ export default function Home() {
   const [hasStartedTyping, setHasStartedTyping] = useState(false);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const isTypingComplete = typedAbout.length >= aboutText.length;
+  const [expandedExp, setExpandedExp] = useState<number | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => setIndex((i) => (i + 1) % roles.length), 3000);
@@ -463,21 +465,75 @@ export default function Home() {
 
           <div className={styles.expList}>
             {portfolioData.experience.map((exp, i) => (
-              <motion.div key={i} variants={fadeUp} className={styles.expRow}>
+              <motion.div 
+                key={i} 
+                variants={fadeUp} 
+                className={`${styles.expRow} ${expandedExp === i ? styles.expRowExpanded : ''}`}
+                onClick={() => setExpandedExp(expandedExp === i ? null : i)}
+              >
                 <div className={styles.expInfo}>
-                  <h3 className={styles.expRole}>{exp.role}</h3>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.6rem' }}>
-                    {('logo' in exp && exp.logo) && (
-                      <Image src={exp.logo as string} alt={exp.company} width={106} height={38} style={{ objectFit: 'contain' }} />
-                    )}
-                    <p className={styles.expCompany} style={{ marginBottom: 0 }}>{exp.company}</p>
+                  <div className={styles.expMain}>
+                    <div className={styles.expRoleGroup}>
+                      <h3 className={styles.expRole}>{exp.role}</h3>
+                      <div className={styles.expCompanyGroup}>
+                        {('logo' in exp && exp.logo) && (
+                          <img src={exp.logo as string} alt={exp.company} className={styles.expLogo} />
+                        )}
+                        <p className={styles.expCompany}>{exp.company}</p>
+                      </div>
+                    </div>
+                    <div className={styles.expYearMobile}>{formatPeriod(exp.period)}</div>
                   </div>
-                  <p className={styles.expDesc}>
+
+                  <p className={styles.expShortDesc}>
                     {('description' in exp ? exp.description : undefined) ??
                       ('points' in exp && Array.isArray((exp as { points?: string[] }).points)
                         ? (exp as { points: string[] }).points[0]
                         : '')}
                   </p>
+
+                  <motion.div 
+                    initial={false}
+                    animate={{ height: expandedExp === i ? 'auto' : 0, opacity: expandedExp === i ? 1 : 0 }}
+                    className={styles.expDetails}
+                  >
+                    {expandedExp === i && (
+                      <div className={styles.expDetailsContent}>
+                        {('highlights' in exp && Array.isArray(exp.highlights)) ? (
+                          <div className={styles.expHighlights}>
+                            {(exp.highlights as any[]).map((h, idx) => (
+                              <div key={idx} className={styles.highlightGroup}>
+                                <h4>{h.title}</h4>
+                                <ul>
+                                  {h.points.map((p: string, pIdx: number) => (
+                                    <li key={pIdx}>{p}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <ul className={styles.expPoints}>
+                            {('points' in exp && Array.isArray(exp.points)) && (
+                              (exp.points as string[]).map((p, idx) => (
+                                <li key={idx}>{p}</li>
+                              ))
+                            )}
+                          </ul>
+                        )}
+                      </div>
+                    )}
+                  </motion.div>
+                  
+                  <div className={styles.expTrigger}>
+                    <span>{expandedExp === i ? 'Show Less' : 'View Details'}</span>
+                    <motion.div 
+                      animate={{ rotate: expandedExp === i ? 180 : 0 }}
+                      className={styles.expArrowIcon}
+                    >
+                      ↓
+                    </motion.div>
+                  </div>
                 </div>
                 <div className={styles.expYear}>{formatPeriod(exp.period)}</div>
               </motion.div>

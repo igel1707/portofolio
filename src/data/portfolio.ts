@@ -6,7 +6,7 @@ export const portfolioData = {
     phone: "+62 857-0877-9694",
     email: "prigelkusumawardani@gmail.com",
     linkedin: "https://linkedin.com/in/prigel-kusumawardani/",
-    github: "https://github.com/", // Placeholder from md
+    github: "https://github.com/",
   },
   summary: "High-achieving Informatics student (GPA 3.98/4.00) at Universitas Brawijaya with a proven track record in bridging technical engineering with strategic management and human-centered design. I specialize in turning complex, ambiguous problems into structured, actionable, and scalable digital solutions by leveraging AI-fluency (NotebookLM) and data-driven reporting. Committed to maintaining high standards of delivery and operational excellence through cross-functional team leadership.",
   skills: [
@@ -74,49 +74,132 @@ export const portfolioData = {
       description: "Leading end-to-end delivery of 4 concurrent technology projects with cross-functional teams.",
       highlights: [
         {
-          title: "Agile Leadership & Cross-Functional Coordination",
+          title: "Agile Leadership & Coordination",
           points: [
-            "Lead Daily Stand-Ups (DSU) for 2 high-priority projects.",
+            "Lead Daily Stand-Ups (DSU) for 2 high-priority projects, ensuring team alignment.",
             "Support 3 Project Managers in orchestrating workflows for 5–10 cross-functional members.",
-            "Facilitate Sprint Retrospectives by documenting action points and process improvements.",
-            "Bridge and onboard new intern and staff members."
+            "Facilitate Sprint Retrospectives to enhance team velocity and collaboration quality.",
+            "Bridge and onboard new intern and staff members through comprehensive briefings."
           ]
         },
         {
-          title: "Timeline Management & Progress Monitoring",
+          title: "Timeline & Progress Management",
           points: [
-            "Develop and manage dynamic Gantt charts, maintaining ~95% on-time milestone delivery rate.",
-            "Perform daily progress audits via GitLab issue boards.",
-            "Implement functional tracking systems in spreadsheets using custom formulas.",
-            "Brief technical teams on updated schedules and critical-path tasks."
+            "Manage dynamic Gantt charts, maintaining a ~95% on-time milestone delivery rate.",
+            "Perform daily progress audits via GitLab, identifying and providing guidance on priorities.",
+            "Implement functional tracking systems using custom formulas for real-time status visualization.",
+            "Brief technical teams on critical-path tasks to ensure optimal resource allocation."
           ]
         },
         {
-          title: "Requirement Engineering & System Architecture",
+          title: "Requirement & Architecture",
           points: [
-            "Support Requirement Gathering (RG) processes and capture business logic into MoM.",
-            "Translate complex needs into structured Blueprints and FSD, reducing rework by 30%.",
-            "Perform deep-dive analysis on requirements using NotebookLM.",
-            "Analyze UI/UX improvement opportunities based on client feedback."
+            "Support Requirement Gathering (RG) processes, capturing business logic into precise MoM.",
+            "Translate complex needs into structured FSD/SRS, reducing rework by 30%.",
+            "Perform deep-dive analysis on change logs using NotebookLM for business alignment.",
+            "Analyze UI/UX improvement opportunities based on direct client feedback during RG."
           ]
         },
         {
-          title: "Stakeholder Engagement & Administrative Quality Assurance",
+          title: "Stakeholder & Quality Assurance",
           points: [
-            "Direct end-to-end User Acceptance Testing (UAT) sessions, accelerating bug resolution by 25%.",
-            "Maintain stakeholder transparency via data-driven weekly and monthly reports.",
-            "Manage formal project handovers and prepare BAST documentation."
+            "Direct end-to-end UAT sessions, resulting in a 25% acceleration in bug resolution time.",
+            "Maintain stakeholder transparency via data-driven weekly and monthly performance reports.",
+            "Manage formal project handovers and prepare administrative BAST documentation."
           ]
         }
       ]
     },
     {
-      role: "Teaching Assistant (Asisten Praktikum)",
-      company: "Universitas Brawijaya",
+      role: "Teaching Assistant: System Analysis & Design",
+      company: "Fakultas Ilmu Komputer, Universitas Brawijaya",
+      logo: "/filkom-logo.png",
       period: "Aug 2025 – Dec 2025",
-      points: [
-        "System Analysis & Design: Mentored 50+ students in mastering requirement analysis and UML modeling.",
-        "User Experience Design: Guided 24 students in applying Design Thinking principles and Figma prototyping."
+      description: "Mentoring 50+ students in structured requirement analysis and UML modeling.",
+      highlights: [
+        {
+          title: "Mentoring & Evaluation",
+          points: [
+            "Mentored students in mastering UML modeling (Use Case, Activity, Sequence, Class Diagrams).",
+            "Evaluated 50+ technical assignments focused on functional specifications and system logic.",
+            "Facilitate laboratory sessions for Business Process Modeling (BPMN) and Gap Analysis."
+          ]
+        }
+      ]
+    },
+    {
+      role: "Teaching Assistant: User Experience Design",
+      company: "Fakultas Ilmu Komputer, Universitas Brawijaya",
+      logo: "/filkom-logo.png",
+      period: "Aug 2025 – Dec 2025",
+      description: "Guiding students through the end-to-end Design Thinking process and high-fidelity prototyping.",
+      highlights: [
+        {
+          title: "UX Research & Design",
+          points: [
+            "Guided 24 students in user research, journey mapping, and information architecture.",
+            "Instructed high-fidelity prototyping in Figma and validated designs through usability testing.",
+            "Supervised final UX projects for 6 student teams from ideation to interactive delivery."
+          ]
+        }
+      ]
+    },
+    {
+      role: "Future Leader Awardee (FLA)",
+      company: "PT AVO Innovation Technology",
+      logo: "/avo-logo.png",
+      period: "Apr 2025 – Jul 2025",
+      description: "Recipient of the prestigious Future Leader Award, recognized for leadership potential and top-tier academic excellence.",
+      highlights: [
+        {
+          title: "Leadership & Impact",
+          points: [
+            "Selected as a top-tier student leader to participate in high-level mentorship and strategic development programs.",
+            "Recognized for demonstrating exceptional leadership potential, academic ethics, and community contribution.",
+            "Engaged in professional growth initiatives focusing on strategic thinking and organizational impact."
+          ]
+        }
+      ]
+    },
+    {
+      role: "Project Lead - National Competition Team",
+      company: "GIDHUB 2025",
+      period: "Jan 2025 – Mar 2025",
+      description: "Leading the design and strategy for a national-level UI/UX competition project.",
+      highlights: [
+        {
+          title: "Leadership & Strategy",
+          points: [
+            "Led a cross-functional team of 3 in designing a scalable mental wellbeing solution.",
+            "Managed project timelines, feature prioritization (MoSCoW), and final presentation delivery.",
+            "Successfully secured 2nd Place out of 50+ competing national teams."
+          ]
+        }
+      ]
+    },
+    {
+      role: "Staff of Information & Communication Division",
+      company: "Himpunan Mahasiswa Departemen Teknik Informatika",
+      logo: "/hmdtif-logo.png",
+      period: "Feb 2024 – Feb 2025",
+      description: "Managing division-level projects, administration, and communication for the Informatics Association.",
+      highlights: [
+        {
+          title: "Project Administration",
+          points: [
+            "Served as Secretary and Treasurer for multiple internal projects, managing administrative and budget flows.",
+            "Documented precise Minutes of Meeting (MoM) for 15+ internal and external projects.",
+            "Awarded Staff of the Month in July 2024 for exceptional performance and dedication."
+          ]
+        },
+        {
+          title: "Communication & Content",
+          points: [
+            "Managed internal and external communication channels for the student association.",
+            "Created digital content and documentation for department-wide events and initiatives.",
+            "Ensured seamless information flow between division leads and technical staff."
+          ]
+        }
       ]
     }
   ],
