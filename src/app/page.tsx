@@ -26,15 +26,27 @@ const tools = [
   'Miro', 'Bizagi', 'NotebookLM', 'Postman', 'Maze',
 ];
 
-function formatPeriod(period: string): string {
+function formatPeriod(period: string) {
   const parts = period.split('–').map((p) => p.trim());
-  if (parts.length === 1) return parts[0].match(/\d{4}/)?.[0] ?? period;
-  const startYear = parts[0].match(/\d{4}/)?.[0];
+  
+  if (parts.length === 1) {
+    const month = parts[0].match(/[a-zA-Z]+/)?.[0] ?? '';
+    const year = parts[0].match(/\d{4}/)?.[0] ?? parts[0];
+    return { startMonth: month, startYear: year, isRange: false };
+  }
+
+  const startMonth = parts[0].match(/[a-zA-Z]+/)?.[0] ?? '';
+  const startYear = parts[0].match(/\d{4}/)?.[0] ?? '';
+  
   const end = parts[1];
-  if (/present/i.test(end)) return `${startYear} – Now`;
-  const endYear = end.match(/\d{4}/)?.[0];
-  if (startYear === endYear) return startYear ?? period;
-  return `${startYear} – ${endYear}`;
+  if (/present/i.test(end)) {
+    return { startMonth, startYear, endMonth: 'Now', endYear: '', isRange: true };
+  }
+
+  const endMonth = end.match(/[a-zA-Z]+/)?.[0] ?? '';
+  const endYear = end.match(/\d{4}/)?.[0] ?? '';
+
+  return { startMonth, startYear, endMonth, endYear, isRange: true };
 }
 
 const projectColors = [
@@ -52,7 +64,6 @@ const pmTools = [
 ];
 
 const analysisTools = [
-  { src: '/tool-logos/swagger.png', alt: 'Swagger' },
   { src: 'https://voyager.postman.com/logo/postman-logo-orange-stacked.svg', alt: 'Postman' },
   { src: 'https://www.drawio.com/favicon.ico', alt: 'Draw.io' },
   { src: '/tool-logos/lucidchart.png', alt: 'Lucidchart' },
@@ -70,7 +81,6 @@ const designTools = [
   { src: 'https://miro.com/favicon.ico', alt: 'Miro' },
   { src: '/tool-logos/maze.png', alt: 'Maze' },
   { src: '/tool-logos/stitch.png', alt: 'Stitch-AI' },
-  { src: 'https://static.figma.com/app/icon/1/favicon.png', alt: 'FigJam' },
 ];
 
 export default function Home() {
@@ -118,10 +128,35 @@ export default function Home() {
       if (current >= aboutText.length) {
         window.clearInterval(typingId);
       }
-    }, 14);
+    }, 2);
 
     return () => window.clearInterval(typingId);
   }, [aboutText, hasStartedTyping]);
+
+  const renderPeriod = (period: string) => {
+    const { startMonth, startYear, endMonth, endYear, isRange } = formatPeriod(period);
+    if (!isRange) {
+      return (
+        <div className={styles.yearItem}>
+          <span className={styles.yearMonth}>{startMonth}</span>
+          <span className={styles.yearValue}>{startYear}</span>
+        </div>
+      );
+    }
+    return (
+      <div className={styles.yearRange}>
+        <div className={styles.yearItem}>
+          <span className={styles.yearMonth}>{startMonth}</span>
+          <span className={styles.yearValue}>{startYear}</span>
+        </div>
+        <span className={styles.yearSeparator}>–</span>
+        <div className={styles.yearItem}>
+          <span className={styles.yearMonth}>{endMonth}</span>
+          <span className={styles.yearValue}>{endYear}</span>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <main>
@@ -482,7 +517,7 @@ export default function Home() {
                         <p className={styles.expCompany}>{exp.company}</p>
                       </div>
                     </div>
-                    <div className={styles.expYearMobile}>{formatPeriod(exp.period)}</div>
+                    <div className={styles.expYearMobile}>{renderPeriod(exp.period)}</div>
                   </div>
 
                   <p className={styles.expShortDesc}>
@@ -535,7 +570,32 @@ export default function Home() {
                     </motion.div>
                   </div>
                 </div>
-                <div className={styles.expYear}>{formatPeriod(exp.period)}</div>
+                <div className={styles.expYear}>
+                  {(() => {
+                    const { startMonth, startYear, endMonth, endYear, isRange } = formatPeriod(exp.period);
+                    if (!isRange) {
+                      return (
+                        <div className={styles.yearItem}>
+                          <span className={styles.yearMonth}>{startMonth}</span>
+                          <span className={styles.yearValue}>{startYear}</span>
+                        </div>
+                      );
+                    }
+                    return (
+                      <div className={styles.yearRange}>
+                        <div className={styles.yearItem}>
+                          <span className={styles.yearMonth}>{startMonth}</span>
+                          <span className={styles.yearValue}>{startYear}</span>
+                        </div>
+                        <span className={styles.yearSeparator}>–</span>
+                        <div className={styles.yearItem}>
+                          <span className={styles.yearMonth}>{endMonth}</span>
+                          <span className={styles.yearValue}>{endYear}</span>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
               </motion.div>
             ))}
           </div>

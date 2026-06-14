@@ -179,7 +179,7 @@ export const portfolioData = {
     },
     {
       role: "Staff of Information & Communication Division",
-      company: "Himpunan Mahasiswa Departemen Teknik Informatika",
+      company: "HMDTIF Universitas Brawijaya",
       logo: "/hmdtif-logo.png",
       period: "Feb 2024 – Feb 2025",
       description: "Managing division-level projects, administration, and communication for the Informatics Association.",

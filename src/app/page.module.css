@@ -768,8 +768,48 @@
   transition: opacity 0.3s;
 }
 
+.yearRange {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.yearItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.yearMonth {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.2rem;
+}
+
+.yearValue {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.yearSeparator {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #ccc;
+  margin: 0 0.2rem;
+}
+
 .expRow:hover .expYear, .expRowExpanded .expYear {
   opacity: 1;
+}
+
+.expRow:hover .yearMonth, .expRowExpanded .yearMonth {
+  color: #0d0d0d;
 }
 
 .expYearMobile {
