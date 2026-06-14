@@ -44,25 +44,32 @@ const projectColors = [
 const pmTools = [
   { src: 'https://jira.atlassian.com/favicon.ico', alt: 'Jira' },
   { src: 'https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png', alt: 'GitLab' },
-  { src: 'https://www.microsoft.com/favicon.ico', alt: 'Microsoft Excel' },
+  { src: 'https://www.microsoft.com/favicon.ico', alt: 'Excel' },
   { src: 'https://www.notion.so/images/favicon.ico', alt: 'Notion' },
+  { src: '/tool-logos/trello.png', alt: 'Trello' },
+  { src: '/tool-logos/slack.png', alt: 'Slack' },
   { src: 'https://workspace.google.com/favicon.ico', alt: 'Google Workspace' },
 ];
 
 const analysisTools = [
-  { src: 'https://notebooklm.google/favicon.ico', alt: 'NotebookLM' },
-  { src: 'https://swagger.io/favicon.ico', alt: 'Swagger' },
+  { src: '/tool-logos/swagger.png', alt: 'Swagger' },
   { src: 'https://voyager.postman.com/logo/postman-logo-orange-stacked.svg', alt: 'Postman' },
-  { src: 'https://resources.bizagi.com/images/ico/favicon.ico', alt: 'Bizagi' },
   { src: 'https://www.drawio.com/favicon.ico', alt: 'Draw.io' },
+  { src: '/tool-logos/lucidchart.png', alt: 'Lucidchart' },
+  { src: '/tool-logos/confluence.png', alt: 'Confluence' },
+  { src: '/tool-logos/sql.png', alt: 'SQL' },
+  { src: '/tool-logos/notebooklm.svg', alt: 'NotebookLM' },
+  { src: 'https://resources.bizagi.com/images/ico/favicon.ico', alt: 'Bizagi' },
 ];
 
 const designTools = [
   { src: 'https://static.figma.com/app/icon/1/favicon.ico', alt: 'Figma' },
-  { src: 'https://maze.co/favicon.ico', alt: 'Maze' },
+  { src: '/tool-logos/sketch.png', alt: 'Sketch' },
+  { src: '/tool-logos/zeplin.png', alt: 'Zeplin' },
+  { src: '/tool-logos/framer.png', alt: 'Framer' },
   { src: 'https://miro.com/favicon.ico', alt: 'Miro' },
-  { src: 'https://static.figma.com/app/icon/1/favicon.png', alt: 'FigJam' },
-  { src: 'https://www.adobe.com/favicon.ico', alt: 'Adobe Illustrator' },
+  { src: '/tool-logos/maze.png', alt: 'Maze' },
+  { src: '/tool-logos/stitch.png', alt: 'Stitch-AI' },
 ];
 
 export default function Home() {
@@ -300,53 +307,134 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeUp} className={styles.servicesCards}>
-              <div className={`${styles.serviceCard} ${styles.serviceCardFeatured}`}>
+              <motion.div 
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className={`${styles.serviceCard} ${styles.serviceCardFeatured}`}
+              >
                 <div className={styles.cardBody}>
                   <h3>Project Management</h3>
-                  <p>Agile leadership, sprint planning, stakeholder follow-up, and cross-functional coordination to keep timelines, reporting, and delivery aligned across real projects.</p>
-                  <p>From daily stand-ups and issue-board tracking to risk follow-up and progress reporting, I focus on keeping teams unblocked, priorities clear, and delivery moving consistently from start to finish.</p>
+                  <p>Leading end-to-end delivery of concurrent technology projects with a focus on Agile orchestration, stakeholder transparency, and operational excellence.</p>
+                  
+                  <motion.div 
+                    variants={stagger}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className={styles.cardHighlights}
+                  >
+                    {["Agile Leadership", "SDLC Governance", "Risk Assessment", "Stakeholder Management", "Synergy Alignment"].map((item, i) => (
+                      <motion.span 
+                        key={i}
+                        variants={fadeUp}
+                        whileHover={{ scale: 1.05, backgroundColor: '#f0f0f0' }}
+                        className={styles.highlightItem}
+                      >
+                        {item}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+
+                  <motion.div 
+                    variants={stagger}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className={styles.cardStats}
+                  >
+                    {[
+                      { val: "~95%", label: "On-Time Delivery" },
+                      { val: "30%", label: "Rework Reduction" },
+                      { val: "4+", label: "Concurrent Projects" },
+                      { val: "10+", label: "Technical Members" }
+                    ].map((stat, i) => (
+                      <motion.div key={i} variants={fadeUp} className={styles.statItem}>
+                        <span className={styles.statValue}>{stat.val}</span>
+                        <span className={styles.statDesc}>{stat.label}</span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  <div className={styles.cardFocusCompact}>
+                    <h4>Strategic Focus</h4>
+                    <div className={styles.focusGrid}>
+                      <span>SDLC Governance</span>
+                      <span>Team Synergy</span>
+                      <span>Risk Mitigation</span>
+                      <span>Data Reporting</span>
+                    </div>
+                  </div>
+
                   <div className={styles.cardLogoRow}>
                     {pmTools.map((tool) => (
-                      <img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" />
+                      <div key={tool.alt} className={styles.toolIconWrapper}>
+                        <motion.img 
+                          src={tool.src} 
+                          alt={tool.alt} 
+                          className={styles.cardLogo} 
+                          loading="lazy" 
+                          whileHover={{ scale: 1.2, rotate: 5 }}
+                        />
+                        <span className={styles.tooltip}>{tool.alt}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
                 <a href="#experience" className={styles.cardArrow} aria-label="Go to experience section">
                   <ArrowUpRight size={18} />
                 </a>
-              </div>
+              </motion.div>
 
-              <div className={styles.serviceCard}>
+              <motion.div 
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className={styles.serviceCard}
+              >
                 <div className={styles.cardBody}>
                   <h3>System Analysis</h3>
-                  <p>Requirement engineering, BPMN, UML modeling, and AI-powered gap analysis for clear system logic.</p>
+                  <p>Transforming complex, ambiguous requirements into precise technical blueprints and optimized system logic using AI-assisted analysis.</p>
+                  <div className={styles.cardHighlights}>
+                    {["BPMN", "UML Design", "Gap Analysis", "Flow Charts"].map((item, i) => (
+                      <motion.span key={i} whileHover={{ scale: 1.05 }} className={styles.highlightItem}>{item}</motion.span>
+                    ))}
+                  </div>
                   <div className={styles.cardLogoRow}>
                     {analysisTools.map((tool) => (
-                      <img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" />
+                      <div key={tool.alt} className={styles.toolIconWrapper}>
+                        <motion.img src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" whileHover={{ scale: 1.2 }} />
+                        <span className={styles.tooltip}>{tool.alt}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
                 <a href="#experience" className={styles.cardArrow} aria-label="Go to experience section">
                   <ArrowUpRight size={18} />
                 </a>
-              </div>
+              </motion.div>
 
-              <div className={styles.serviceCard}>
+              <motion.div 
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className={styles.serviceCard}
+              >
                 <div className={styles.cardBody}>
                   <h3>UI/UX Design</h3>
-                  <p>
-                    I design end-to-end flows from user research to high-fidelity prototypes validated through usability testing.
-                  </p>
+                  <p>Crafting human-centered digital experiences through rigorous research, design thinking, and high-fidelity interactive prototyping.</p>
+                  <div className={styles.cardHighlights}>
+                    {["User Research", "Prototyping", "Testing", "Wireframing"].map((item, i) => (
+                      <motion.span key={i} whileHover={{ scale: 1.05 }} className={styles.highlightItem}>{item}</motion.span>
+                    ))}
+                  </div>
                   <div className={styles.cardLogoRow}>
                     {designTools.map((tool) => (
-                      <img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" />
+                      <div key={tool.alt} className={styles.toolIconWrapper}>
+                        <motion.img key={tool.alt} src={tool.src} alt={tool.alt} className={styles.cardLogo} loading="lazy" whileHover={{ scale: 1.2 }} />
+                        <span className={styles.tooltip}>{tool.alt}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
                 <a href="#portfolio" className={styles.cardArrow} aria-label="Go to portfolio section">
                   <ArrowUpRight size={18} />
                 </a>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>

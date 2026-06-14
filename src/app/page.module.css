@@ -411,6 +411,48 @@
   margin-top: 0.9rem;
 }
 
+.toolIconWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: #0d0d0d;
+  color: #fff;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #0d0d0d transparent transparent transparent;
+}
+
+.toolIconWrapper:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-12px);
+}
+
 .cardLogo {
   width: 30px;
   height: 30px;
@@ -419,6 +461,104 @@
   background: #fff;
   padding: 4px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.cardHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.highlightItem {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #666;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cardStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.2rem 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.statValue {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0d0d0d;
+  letter-spacing: -0.02em;
+}
+
+.statDesc {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cardFocusCompact {
+  margin: 0.8rem 0;
+}
+
+.cardFocusCompact h4 {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cardFocusCompact h4::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #f0f0f0;
+}
+
+.focusGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 0.8rem;
+}
+
+.focusGrid span {
+  font-size: 0.75rem;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.focusGrid span::before {
+  content: '•';
+  color: #ccc;
+}
+
+.serviceCardFeatured .highlightItem {
+  background: #fff;
+  border-color: #e0e0e0;
 }
 
 .serviceCardDark p {

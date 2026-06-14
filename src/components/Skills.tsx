@@ -24,7 +24,12 @@ export default function Skills() {
             onMouseEnter={() => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex(null)}
           >
-            <h3 className={styles.categoryName}>{group.category}</h3>
+            <div className={styles.categoryMain}>
+              <h3 className={styles.categoryName}>{group.category}</h3>
+              {(group as any).description && (
+                <p className={styles.categoryDescription}>{(group as any).description}</p>
+              )}
+            </div>
             <div className={styles.details}>
               {group.items.map((item, i) => (
                 <span key={i} className={styles.skillItem}>

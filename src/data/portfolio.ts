@@ -12,15 +12,44 @@ export const portfolioData = {
   skills: [
     {
       category: "Project Management",
-      items: ["Agile/Scrum Methodologies", "Sprint Prioritization", "Stakeholder Coordination", "Monitoring & Timeline Management", "MoM Documentation", "Risk Mitigation", "Jira", "GitLab Issue Boards"]
+      description: "Leading end-to-end delivery of concurrent technology projects with a focus on Agile orchestration, stakeholder transparency, and operational excellence.",
+      items: [
+        "Agile & Scrum Leadership",
+        "Sprint & Backlog Orchestration",
+        "Timeline & Milestone Tracking",
+        "Stakeholder Engagement",
+        "Technical Documentation (BAST/MoM)",
+        "Risk Assessment & Mitigation",
+        "User Acceptance Testing (UAT)",
+        "95% On-time Milestone Delivery",
+        "30% Rework Reduction (FSD/SRS)"
+      ]
     },
     {
       category: "System Analysis",
-      items: ["Requirement Engineering (BRD/FRD/SRS)", "Gap Analysis (NotebookLM)", "Business Process Modeling (BPMN)", "UML Modeling", "Database Design", "SQL", "API Documentation (Swagger)"]
+      description: "Transforming complex, ambiguous requirements into precise technical blueprints and optimized system logic using AI-assisted analysis.",
+      items: [
+        "Requirement Engineering (BRD/FRD/SRS)",
+        "AI-Assisted Analysis (NotebookLM)",
+        "Business Process Modeling (BPMN)",
+        "UML System Design",
+        "Database Architecture & SQL",
+        "API Specification (Swagger)",
+        "Gap & Logic Analysis"
+      ]
     },
     {
       category: "UI/UX Design",
-      items: ["Design Thinking", "User Research", "Journey Mapping", "Information Architecture", "High-Fidelity Prototyping (Figma)", "Usability Testing (Maze)", "Visual Design"]
+      description: "Crafting human-centered digital experiences through rigorous research, design thinking, and high-fidelity interactive prototyping.",
+      items: [
+        "Design Thinking & Strategy",
+        "User Research & Synthesis",
+        "Information Architecture",
+        "High-Fidelity Prototyping (Figma)",
+        "Usability Testing (Maze)",
+        "Design Systems",
+        "Visual & Interaction Design"
+      ]
     },
     {
       category: "Tools",
